@@ -55,7 +55,7 @@ export const About = () => {
               : '-translate-y-8 opacity-0'
           }`}
         >
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-white text-transparent text-center">
+          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-white text-transparent text-center" style={{ willChange: 'transform, opacity' }}>
             About Me
           </h2>
         </div>
