@@ -55,21 +55,9 @@ export const About = () => {
               : '-translate-y-8 opacity-0'
           }`}
         >
-          <h2
-  className="
-    text-3xl font-bold mb-8 text-center
-    text-white
-    md:bg-gradient-to-r md:from-blue-500 md:to-cyan-400 
-    md:bg-clip-text md:text-transparent
-  "
-  style={{
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-  }}
->
-  About Me
-</h2>
-
+          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-white text-transparent text-center" style={{ willChange: 'transform, opacity' }}>
+            About Me
+          </h2>
         </div>
 
         <div
