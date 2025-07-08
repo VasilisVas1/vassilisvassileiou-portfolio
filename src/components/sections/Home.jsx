@@ -15,7 +15,7 @@ export const Home = () => {
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="text-center z-20 px-4">
         <div style={{ willChange: 'transform, opacity' }} className={`transition-all duration-1000 transform ${isLoaded ? 'translate-y-0 opacity-100 scale-100' : '-translate-y-12 opacity-0 scale-95'}`}>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-white text-transparent leading-tight" style={{ willChange: 'transform, opacity' }}>Hi, I'm Vassilis!</h1>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-white text-transparent leading-tight" style={{ willChange: 'transform, opacity' }}>Hi, I'm Vasilis!</h1>
         </div>
 
         <div
