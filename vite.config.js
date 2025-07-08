@@ -9,6 +9,6 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     port: Number(process.env.PORT)||5173,
-    allowedHosts: ["portfolio-website-7h533.ondigitalocean.app"]   
+    allowedHosts: ["portfolio-website-7h533.ondigitalocean.app","vasilisvasileiou.com"]   
   }
 })
