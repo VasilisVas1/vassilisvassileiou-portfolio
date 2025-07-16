@@ -27,7 +27,7 @@ export const Home = () => {
           style={{ transitionDelay: '300ms' }}
         >
           <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto leading-relaxed">
-            I'm a final-year Computer Science student at the University of Piraeus with a 
+            Bachelor's degree in Computer Science at the University of Piraeus with a 
             strong passion for programming and building meaningful applications. 
             I enjoy turning ideas into real-world solutions through code and constantly seek 
             opportunities to expand my knowledge and skills in software development. 
