@@ -24,6 +24,24 @@ export const Projects = () => {
       type: "Game Development",
       link: "https://github.com/VasilisVas1/Brackeys_GameJam"
     },
+    {
+      id: 3,
+      title: "Pokemon Battle Prediction",
+      description: "A comprehensive machine learning project that predicts Pokemon battle outcomes using statistical analysis and advanced feature engineering techniques.",
+      skills: ["Python", "Jupyter Notebook", "Pandas", "Matplotlib", "Numpy", "Seaborn"],
+      year: "2025",
+      type: "Machine Learning",
+      link: "https://github.com/VasilisVas1/pokemon-battle-prediction"
+    },
+    {
+      id: 4,
+      title: "Research ArXiv Assistant",
+      description: "An intelligent multi-agent system that automatically conducts literature reviews, searches academic papers, and generates professional PDF reports.",
+      skills: ["Python", "AI agents", "Open Router", "Flask"],
+      year: "2025",
+      type: "AI Agents",
+      link: "https://github.com/VasilisVas1/research-arxiv-assistant"
+    },
   ];
 
   useEffect(() => {
