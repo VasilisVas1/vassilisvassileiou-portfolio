@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vasilis Vasileiou</title>
-  <meta name="description" content="Vasilis Vasileiou — software developer with a BSc in Computer Science from the University of Piraeus. Mobile apps, games, machine learning and AI projects." />
+  <title>Vasilis Vasileiou · Machine Learning &amp; AI Engineer</title>
+  <meta name="description" content="Vasilis Vasileiou — machine learning and AI engineer with a BSc in Computer Science from the University of Piraeus. Deep learning, computer vision, AI agents and data projects." />
   <meta name="theme-color" content="#f4f5f1" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Vasilis Vasileiou — Software Developer" />
-  <meta property="og:description" content="Software developer building mobile apps, games, machine learning and AI projects." />
+  <meta property="og:title" content="Vasilis Vasileiou — Machine Learning &amp; AI Engineer" />
+  <meta property="og:description" content="Deep learning, computer vision, AI agents and data projects by Vasilis Vasileiou." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f4f5f1'/%3E%3Cpath d='M4 50 22 21l8 10 11-17 19 36Z' fill='%23626a65'/%3E%3Cpath d='M41 14l6 11-4-2-4 4-3-5Z' fill='%23fff'/%3E%3Cpath d='M22 21l4 6-3-1-3 3-1-3Z' fill='%23fff'/%3E%3Cpath d='M0 50q16-8 32-2t32-2v18H0Z' fill='%238faa32'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -187,7 +187,9 @@
     .prompt b { font-weight: 500; color: var(--meadow-deep); }
     .hero h1 { margin-top: 1rem; font-family: var(--font-display); font-weight: 400; font-size: clamp(3.5rem, 9vw, 6.6rem); line-height: .96; letter-spacing: -.015em; }
     .hero h1 em { color: var(--pine); }
-    .hero-lede { margin-top: 1.5rem; max-width: 34rem; color: var(--ink-soft); }
+    .hero-role { display: flex; align-items: center; gap: .7rem; margin-top: 1.1rem; font: 600 .95rem var(--font-sans); letter-spacing: .02em; color: var(--pine); }
+    .hero-role::before { content: ""; width: 2rem; height: 2px; border-radius: 2px; background: var(--meadow); }
+    .hero-lede { margin-top: 1.1rem; max-width: 34rem; color: var(--ink-soft); }
     .hero-actions { margin-top: 2.1rem; display: flex; flex-wrap: wrap; gap: .85rem; }
 
     .landscape { position: absolute; left: 0; right: 0; bottom: 0; height: var(--land-h); pointer-events: none; }
@@ -228,7 +230,7 @@
     .topo .major { stroke-width: 1.1; opacity: .9; }
     .about .container { position: relative; }
     .about-grid { display: grid; gap: 2.75rem; margin-top: 2.75rem; }
-    .about-lede { font-family: var(--font-display); font-size: clamp(1.8rem, 3.3vw, 2.45rem); line-height: 1.25; color: var(--ink); }
+    .about-lede { font-family: var(--font-display); font-size: clamp(1.65rem, 2.8vw, 2.1rem); line-height: 1.28; color: var(--ink); }
     .about-note { margin-top: 1.4rem; font: 400 .85rem var(--font-mono); color: var(--ink-mute); }
 
     .term { overflow: hidden; color: #dde3dc; background: var(--forest); border-radius: 18px; box-shadow: var(--shadow-lg); }
@@ -277,9 +279,26 @@
     .card-type { color: var(--meadow-deep); font-weight: 500; }
     .card h3 { font-family: var(--font-display); font-weight: 400; font-size: 2rem; line-height: 1.08; }
     .card p { color: var(--ink-soft); font-size: .98rem; }
+    .card p.card-meta { font-size: .8rem; color: var(--ink-mute); }
     .tags { display: flex; flex-wrap: wrap; gap: .45rem; }
     .tags li { padding: .28rem .7rem; font: 400 .72rem var(--font-mono); color: var(--ink-soft); background: #eef1ea; border: 1px solid #dde3da; border-radius: 999px; }
     .card-link { align-self: flex-start; margin-top: auto; padding-top: .5rem; display: inline-flex; align-items: center; gap: .45rem; font: 500 .82rem var(--font-mono); color: var(--pine); text-decoration: none; }
+    .card-badge { margin-left: .4rem; padding: .12rem .55rem; font: 500 .66rem var(--font-mono); letter-spacing: .04em; color: var(--forest); background: var(--meadow-2); border-radius: 999px; }
+    .card-stat { display: flex; align-items: center; gap: .55rem; padding: .55rem .8rem; font: 500 .78rem/1.45 var(--font-mono); color: var(--pine); background: #eef2e3; border: 1px solid #dfe6cf; border-radius: 12px; }
+    .card p.card-stat { color: var(--pine); font-size: .78rem; }
+    .card-stat::before { content: "▲"; font-size: .65rem; color: var(--meadow-deep); }
+    .card p.card-credit { font: 400 .78rem var(--font-mono); color: var(--ink-mute); }
+    .card-credit a { color: var(--pine); text-decoration: none; border-bottom: 1px solid rgb(47 66 50 / .3); }
+    .card-credit a:hover { border-color: var(--pine); }
+    .card-main, .card-side { display: flex; flex-direction: column; gap: .75rem; }
+    .card-side { flex: 1; }
+    .card-links { display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; margin-top: auto; padding-top: .5rem; }
+    .card-links .card-link { margin-top: 0; padding-top: 0; }
+    .group-label { display: flex; align-items: center; gap: .6rem; margin-top: 3.25rem; font: 400 .82rem var(--font-mono); color: var(--ink-soft); }
+    .group-label span { color: var(--meadow-deep); }
+    .group-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+    .group-label + .cards { margin-top: 1.25rem; }
+    .cards + .group-label { margin-top: 4rem; }
     .card-link span { transition: transform .35s var(--ease); }
     .card-link:hover { text-decoration: underline; text-underline-offset: 4px; }
     .card-link:hover span { transform: translate(2px, -2px); }
@@ -341,6 +360,10 @@
     /* ---------- Larger screens ---------- */
     @media (min-width: 860px) {
       .cards { grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+      .card--featured { grid-column: 1 / -1; }
+      .card--featured .profile { height: 150px; }
+      .card--featured .card-body { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1rem 3rem; align-items: stretch; padding: 1.7rem 1.9rem 1.8rem; }
+      .card--featured h3 { font-size: 2.5rem; }
     }
     @media (min-width: 960px) {
       .hero-content { padding-bottom: calc(var(--land-h) * .46); }
@@ -459,11 +482,12 @@
         <div class="hero-copy">
           <p class="prompt intro" style="--i:0"><b>vasilis@summit</b>:~$ whoami<span class="caret" aria-hidden="true"></span></p>
           <h1 class="intro" style="--i:1">Hi, I'm<br /><em>Vasilis!</em></h1>
+          <p class="hero-role intro" style="--i:2">Machine Learning &amp; AI Engineer</p>
           <p class="hero-lede intro" style="--i:2">
-            Bachelor's degree in Computer Science at the University of Piraeus with a strong passion for programming and
-            building meaningful applications. I enjoy turning ideas into real-world solutions through code and constantly seek
-            opportunities to expand my knowledge and skills in software development. Whether it's developing mobile apps,
-            crafting web experiences, or exploring new technologies.
+            Bachelor's degree in Computer Science at the University of Piraeus with a strong passion for machine learning
+            and AI engineering. I enjoy turning ideas into real-world solutions through code — from training and evaluating
+            deep learning models to building computer vision systems and multi-agent AI tools — and I'm constantly looking
+            for opportunities to expand my knowledge and skills.
           </p>
           <div class="hero-actions intro" style="--i:3">
             <a class="btn btn-primary" href="#projects">View Projects
@@ -498,7 +522,7 @@
 
         <div class="about-grid">
           <div class="reveal">
-            <p class="about-lede">I'm passionate about coding and love bringing ideas to life through software. Creating useful, impactful applications is what drives me every day.</p>
+            <p class="about-lede">I'm passionate about coding and love bringing ideas to life through software. Creating useful, impactful applications is what drives me every day — and lately that means machine learning and AI: training models, evaluating them honestly, and turning them into tools people can use.</p>
             <p class="about-note">// off the keyboard: usually somewhere above the treeline</p>
           </div>
 
@@ -506,24 +530,27 @@
             <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>~/backpack</span></div>
             <pre aria-hidden="true"><code><span class="t-prompt">$</span> tree ~/backpack
 <span class="t-dir">backpack/</span>
-<span class="t-branch">├──</span> <span class="t-dir">frontend/</span>
-<span class="t-branch">│   ├──</span> React
-<span class="t-branch">│   ├──</span> TailwindCSS
-<span class="t-branch">│   ├──</span> HTML
-<span class="t-branch">│   ├──</span> CSS
-<span class="t-branch">│   └──</span> JavaScript
-<span class="t-branch">└──</span> <span class="t-dir">backend/</span>
-<span class="t-branch">    ├──</span> Python
-<span class="t-branch">    ├──</span> Java
-<span class="t-branch">    ├──</span> C#
-<span class="t-branch">    ├──</span> MySQL
-<span class="t-branch">    ├──</span> PostgreSQL
-<span class="t-branch">    ├──</span> Firebase
-<span class="t-branch">    ├──</span> REST APIs
-<span class="t-branch">    └──</span> Flask
+<span class="t-branch">├──</span> <span class="t-dir">ml-ai/</span>
+<span class="t-branch">│   ├──</span> Python · Jupyter
+<span class="t-branch">│   ├──</span> PyTorch · TensorFlow
+<span class="t-branch">│   ├──</span> YOLO11 · OpenCV
+<span class="t-branch">│   ├──</span> scikit-learn
+<span class="t-branch">│   ├──</span> Pandas · NumPy
+<span class="t-branch">│   ├──</span> Matplotlib · Seaborn
+<span class="t-branch">│   ├──</span> Streamlit
+<span class="t-branch">│   └──</span> AI agents · OpenRouter
+<span class="t-branch">├──</span> <span class="t-dir">backend/</span>
+<span class="t-branch">│   ├──</span> Java · C#
+<span class="t-branch">│   ├──</span> Flask · REST APIs
+<span class="t-branch">│   ├──</span> MySQL · PostgreSQL
+<span class="t-branch">│   ├──</span> Firebase
+<span class="t-branch">│   └──</span> Selenium
+<span class="t-branch">└──</span> <span class="t-dir">frontend/</span>
+<span class="t-branch">    ├──</span> React · TailwindCSS
+<span class="t-branch">    └──</span> HTML · CSS · JavaScript
 
-<span class="t-muted">2 directories, 13 files</span></code></pre>
-            <figcaption class="visually-hidden">Skills. Frontend: React, TailwindCSS, HTML, CSS, JavaScript. Backend: Python, Java, C#, MySQL, PostgreSQL, Firebase, REST APIs, Flask.</figcaption>
+<span class="t-muted">3 directories, 27 tools</span></code></pre>
+            <figcaption class="visually-hidden">Skills. Machine learning and AI: Python, Jupyter, PyTorch, TensorFlow, YOLO11, OpenCV, scikit-learn, Pandas, NumPy, Matplotlib, Seaborn, Streamlit, AI agents, OpenRouter. Backend: Java, C#, Flask, REST APIs, MySQL, PostgreSQL, Firebase, Selenium. Frontend: React, TailwindCSS, HTML, CSS, JavaScript.</figcaption>
           </figure>
         </div>
 
@@ -553,16 +580,85 @@
     </section>
 
     <!-- ============================= PROJECTS ============================= -->
-    <!-- To add a project, copy one <article class="card"> block. The elevation
-         profile on top is generated from the data-seed text. -->
+    <!-- To add a project, copy one <article class="card"> block into the right group.
+         The elevation profile on top is generated from the data-seed text. -->
     <section id="projects" class="projects">
       <div class="container">
         <header class="reveal">
           <p class="eyebrow"><span>03</span>~/projects</p>
           <h2 class="section-title">Projects</h2>
-          <p class="section-sub">A few trails I've mapped out in code.</p>
+          <p class="section-sub">Mostly machine learning and AI — deep learning, computer vision and agents — plus a few side trails.</p>
         </header>
 
+        <h3 class="group-label reveal"><span>$ ls</span>~/projects/ml-ai</h3>
+        <div class="cards">
+          <article class="card card--featured reveal">
+            <div class="profile" data-seed="Where's Waldo"></div>
+            <div class="card-body">
+              <div class="card-main">
+                <p class="card-meta"><span><span class="card-type">Computer Vision</span> <span class="card-badge">featured</span></span><span>2026</span></p>
+                <h3>Where's Waldo?</h3>
+                <p>A computer-vision search for the world's most elusive striped man. Three detectors — a sliding-window CNN written from scratch (with hand-implemented IoU and non-max suppression), YOLO11n on whole pages, and YOLO11n fine-tuned on native-resolution tiles — compared with scene-level 5-fold cross-validation. The best one powers a themed Streamlit app that ranks the likeliest spots with zoomed-in close-ups.</p>
+              </div>
+              <div class="card-side">
+                <p class="card-stat">Waldo in the top 3 guesses on 72% of unseen pages</p>
+                <ul class="tags"><li>Python</li><li>PyTorch</li><li>YOLO11</li><li>Albumentations</li><li>scikit-learn</li><li>Streamlit</li></ul>
+                <div class="card-links">
+                  <a class="card-link" href="https://wheres-waldo-finder.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo <span aria-hidden="true">↗</span><span class="visually-hidden"> of Where's Waldo</span></a>
+                  <a class="card-link" href="https://github.com/VasilisVas1/wheres-waldo" target="_blank" rel="noopener noreferrer">Source Code <span aria-hidden="true">↗</span><span class="visually-hidden"> of Where's Waldo on GitHub</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="profile" data-seed="Chest X-Ray Pneumonia"></div>
+            <div class="card-body">
+              <p class="card-meta"><span class="card-type">Deep Learning</span><span>2026</span></p>
+              <h3>Pneumonia Detection from Chest X-Rays</h3>
+              <p>An experimental comparison of a baseline CNN, EfficientNet-B0 and DenseNet-121 for detecting pneumonia in chest X-rays. Every model was trained five times and reported as mean ± std, with class weighting, threshold optimisation and Grad-CAM heatmaps showing where each network looks.</p>
+              <p class="card-stat">DenseNet-121: 0.896 ± 0.011 accuracy across 5 runs</p>
+              <ul class="tags"><li>Python</li><li>TensorFlow</li><li>EfficientNet</li><li>DenseNet</li><li>Grad-CAM</li><li>OpenCV</li></ul>
+              <a class="card-link" href="https://github.com/VasilisVas1/chest-xray-pneumonia-cnn-study" target="_blank" rel="noopener noreferrer">Source Code <span aria-hidden="true">↗</span><span class="visually-hidden"> of Pneumonia Detection from Chest X-Rays on GitHub</span></a>
+            </div>
+          </article>
+
+          <article class="card reveal" style="--delay:.08s">
+            <div class="profile" data-seed="Research ArXiv Assistant"></div>
+            <div class="card-body">
+              <p class="card-meta"><span class="card-type">AI Agents</span><span>2025</span></p>
+              <h3>Research ArXiv Assistant</h3>
+              <p>An intelligent multi-agent system that automatically conducts literature reviews, searches academic papers, and generates professional PDF reports.</p>
+              <ul class="tags"><li>Python</li><li>AI agents</li><li>Open Router</li><li>Flask</li></ul>
+              <a class="card-link" href="https://github.com/VasilisVas1/research-arxiv-assistant" target="_blank" rel="noopener noreferrer">Source Code <span aria-hidden="true">↗</span><span class="visually-hidden"> of Research ArXiv Assistant on GitHub</span></a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="profile" data-seed="Pokemon Battle Prediction"></div>
+            <div class="card-body">
+              <p class="card-meta"><span class="card-type">Machine Learning</span><span>2025</span></p>
+              <h3>Pokemon Battle Prediction</h3>
+              <p>A comprehensive machine learning project that predicts Pokemon battle outcomes using statistical analysis and advanced feature engineering techniques.</p>
+              <ul class="tags"><li>Python</li><li>Jupyter Notebook</li><li>Pandas</li><li>Matplotlib</li><li>Numpy</li><li>Seaborn</li></ul>
+              <a class="card-link" href="https://github.com/VasilisVas1/pokemon-battle-prediction" target="_blank" rel="noopener noreferrer">Source Code <span aria-hidden="true">↗</span><span class="visually-hidden"> of Pokemon Battle Prediction on GitHub</span></a>
+            </div>
+          </article>
+
+          <article class="card reveal" style="--delay:.08s">
+            <div class="profile" data-seed="YouTube Creator Scraper"></div>
+            <div class="card-body">
+              <p class="card-meta"><span class="card-type">Data Collection</span><span>2025</span></p>
+              <h3>YouTube Creator Scraper</h3>
+              <p>Finds YouTube creators in any niche through the YouTube Data API v3, then enriches each channel with ViewStats analytics scraped with Selenium — subscribers, views, 28-day growth and estimated revenue — into a CSV database for creator research and outreach.</p>
+              <p class="card-credit">Built with <a href="https://github.com/nikosgravos" target="_blank" rel="noopener noreferrer">@nikosgravos</a></p>
+              <ul class="tags"><li>Python</li><li>YouTube Data API</li><li>Selenium</li><li>Pandas</li></ul>
+              <a class="card-link" href="https://github.com/nikosgravos/yt-creator-scraper" target="_blank" rel="noopener noreferrer">Source Code <span aria-hidden="true">↗</span><span class="visually-hidden"> of YouTube Creator Scraper on GitHub</span></a>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="group-label reveal"><span>$ ls</span>~/projects/side-trails</h3>
         <div class="cards">
           <article class="card reveal">
             <div class="profile" data-seed="FridgeChef"></div>
@@ -583,28 +679,6 @@
               <p>Fever Dream is a 3D adventure game developed in Unity using C# for Brackeys Game Jam 2025.1. The game follows a lumberjack on his journey to his cave for a nap, where unexpected challenges arise, aligning with the jam's theme, 'Nothing Can Go Wrong'.</p>
               <ul class="tags"><li>C#</li><li>Unity</li></ul>
               <a class="card-link" href="https://github.com/VasilisVas1/Brackeys_GameJam" target="_blank" rel="noopener noreferrer">Source Code <span aria-hidden="true">↗</span><span class="visually-hidden"> of Fever Dream on GitHub</span></a>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="profile" data-seed="Pokemon Battle Prediction"></div>
-            <div class="card-body">
-              <p class="card-meta"><span class="card-type">Machine Learning</span><span>2025</span></p>
-              <h3>Pokemon Battle Prediction</h3>
-              <p>A comprehensive machine learning project that predicts Pokemon battle outcomes using statistical analysis and advanced feature engineering techniques.</p>
-              <ul class="tags"><li>Python</li><li>Jupyter Notebook</li><li>Pandas</li><li>Matplotlib</li><li>Numpy</li><li>Seaborn</li></ul>
-              <a class="card-link" href="https://github.com/VasilisVas1/pokemon-battle-prediction" target="_blank" rel="noopener noreferrer">Source Code <span aria-hidden="true">↗</span><span class="visually-hidden"> of Pokemon Battle Prediction on GitHub</span></a>
-            </div>
-          </article>
-
-          <article class="card reveal" style="--delay:.08s">
-            <div class="profile" data-seed="Research ArXiv Assistant"></div>
-            <div class="card-body">
-              <p class="card-meta"><span class="card-type">AI Agents</span><span>2025</span></p>
-              <h3>Research ArXiv Assistant</h3>
-              <p>An intelligent multi-agent system that automatically conducts literature reviews, searches academic papers, and generates professional PDF reports.</p>
-              <ul class="tags"><li>Python</li><li>AI agents</li><li>Open Router</li><li>Flask</li></ul>
-              <a class="card-link" href="https://github.com/VasilisVas1/research-arxiv-assistant" target="_blank" rel="noopener noreferrer">Source Code <span aria-hidden="true">↗</span><span class="visually-hidden"> of Research ArXiv Assistant on GitHub</span></a>
             </div>
           </article>
         </div>
