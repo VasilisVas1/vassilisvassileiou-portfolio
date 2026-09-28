@@ -1,16 +1,1254 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com"/>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vasilis Vasileiou</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vasilis Vasileiou</title>
+  <meta name="description" content="Vasilis Vasileiou — software developer with a BSc in Computer Science from the University of Piraeus. Mobile apps, games, machine learning and AI projects." />
+  <meta name="theme-color" content="#f4f5f1" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Vasilis Vasileiou — Software Developer" />
+  <meta property="og:description" content="Software developer building mobile apps, games, machine learning and AI projects." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f4f5f1'/%3E%3Cpath d='M4 50 22 21l8 10 11-17 19 36Z' fill='%23626a65'/%3E%3Cpath d='M41 14l6 11-4-2-4 4-3-5Z' fill='%23fff'/%3E%3Cpath d='M22 21l4 6-3-1-3 3-1-3Z' fill='%23fff'/%3E%3Cpath d='M0 50q16-8 32-2t32-2v18H0Z' fill='%238faa32'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>document.documentElement.classList.add('js', 'is-loading');</script>
+  <style>
+    /* =====================================================================
+       Palette — taken from the misty alpine photos: fog-white sky, hazy
+       ridges, slate rock with snow, sage slopes, deep pine, vivid meadow,
+       and the blue of the tent at basecamp.
+       ===================================================================== */
+    :root {
+      --mist: #f4f5f1;
+      --mist-2: #eceee8;
+      --line: #d6dcd4;
+      --haze: #cdd5d1;
+      --sage: #8d9c92;
+      --slate: #6f746f;
+      --pine: #2f4232;
+      --pine-2: #3e5445;
+      --forest: #1f2b24;
+      --night: #19231e;
+      --ink: #1d2722;
+      --ink-soft: #4a5751;
+      --ink-mute: #6b7771;
+      --meadow: #8faa32;
+      --meadow-2: #a9c24b;
+      --meadow-deep: #587220;
+      --snow: #f6f5f0;
+      --tent: #2e5fa8;
+      --tent-light: #9cc3f0;
+      --ember: #e8893a;
+
+      --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+      --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --shadow-sm: 0 1px 2px rgb(29 39 34 / 0.05), 0 8px 24px -14px rgb(29 39 34 / 0.18);
+      --shadow-lg: 0 2px 4px rgb(29 39 34 / 0.05), 0 28px 50px -24px rgb(29 39 34 / 0.32);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html.is-loading { overflow: hidden; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--mist);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+    }
+    h1, h2, h3, h4, p, ul, ol, figure, pre { margin: 0; }
+    ul, ol { padding: 0; list-style: none; }
+    a { color: inherit; }
+    button, input, textarea { font: inherit; color: inherit; }
+    svg { display: block; }
+    ::selection { background: var(--meadow-2); color: var(--forest); }
+    :focus-visible { outline: 2px solid var(--tent); outline-offset: 3px; border-radius: 6px; }
+    section[id] { scroll-margin-top: 68px; }
+
+    .container { width: min(1120px, 100% - clamp(2.5rem, 7vw, 5rem)); margin-inline: auto; }
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+    .skip-link {
+      position: fixed; left: 1rem; top: -4rem; z-index: 200;
+      padding: .6rem 1rem; border-radius: 999px;
+      font: 500 .8rem var(--font-mono); text-decoration: none;
+      color: var(--mist); background: var(--pine); transition: top .2s;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+      padding: .9rem 1.45rem; border-radius: 999px; border: 1px solid transparent;
+      font: 500 .85rem/1.2 var(--font-mono); letter-spacing: .01em; white-space: nowrap;
+      text-decoration: none; cursor: pointer;
+      transition: transform .35s var(--ease), background-color .3s, border-color .3s, box-shadow .35s var(--ease), color .3s;
+    }
+    .btn svg { width: 1rem; height: 1rem; flex: none; transition: transform .35s var(--ease); }
+    .btn:hover svg { transform: translateX(3px); }
+    .btn-primary { color: var(--mist); background: var(--pine); box-shadow: 0 12px 24px -14px rgb(31 43 36 / .9); }
+    .btn-primary:hover { background: var(--forest); transform: translateY(-2px); box-shadow: 0 18px 30px -16px rgb(31 43 36 / .9); }
+    .btn-ghost { color: var(--ink); background: rgb(255 255 255 / .45); border-color: rgb(29 39 34 / .2); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .btn-ghost:hover { border-color: rgb(29 39 34 / .55); background: rgb(255 255 255 / .75); transform: translateY(-2px); }
+    .btn[disabled] { opacity: .65; cursor: progress; transform: none; }
+
+    /* ---------- Section headings ---------- */
+    .eyebrow { display: flex; align-items: center; gap: .75rem; font: 500 .78rem var(--font-mono); letter-spacing: .06em; color: var(--ink-mute); }
+    .eyebrow span { color: var(--meadow-deep); }
+    .eyebrow::after { content: ""; width: 3rem; height: 1px; background: currentColor; opacity: .5; }
+    .section-title {
+      margin-top: .7rem;
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(2.9rem, 6.4vw, 4.6rem); line-height: 1; letter-spacing: -.01em;
+    }
+    .section-title em { font-style: italic; color: var(--pine); }
+    .section-sub { margin-top: 1.1rem; max-width: 34rem; font-size: 1.08rem; color: var(--ink-soft); }
+
+    /* ---------- Scroll reveal ---------- */
+    .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity 1s var(--ease), transform 1.1s var(--ease); transition-delay: var(--delay, 0s); }
+    .js .reveal.is-visible { opacity: 1; transform: none; }
+
+    /* ---------- Loader ---------- */
+    .loader {
+      position: fixed; inset: 0; z-index: 150; display: none; place-items: center;
+      background: var(--mist);
+      transition: opacity .9s var(--ease), filter .9s var(--ease), visibility 0s linear .9s;
+    }
+    .js .loader { display: grid; animation: failsafe-hide .6s ease 6s forwards; }
+    .loader.is-done { opacity: 0; filter: blur(8px); visibility: hidden; }
+    .loader-text { font: 500 clamp(1.6rem, 6vw, 2.3rem) var(--font-mono); letter-spacing: -.01em; color: var(--ink); }
+    .caret { display: inline-block; width: .5em; height: 1.05em; margin-left: .3em; vertical-align: -.16em; background: var(--meadow); animation: blink 1.05s step-end infinite; }
+    .loader-ridge { width: 230px; height: 44px; margin: 1.1rem auto 0; overflow: visible; }
+    .loader-ridge path { fill: none; stroke: var(--pine); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .25s linear; }
+    .loader-note { margin-top: .75rem; text-align: center; font: 400 .72rem var(--font-mono); letter-spacing: .14em; color: var(--ink-mute); }
+
+    /* ---------- Navigation ---------- */
+    .nav { position: fixed; inset: 0 0 auto; z-index: 60; transition: background-color .4s, box-shadow .4s; }
+    .nav.is-solid { background: rgb(244 245 241 / .8); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2); box-shadow: 0 1px 0 rgb(29 39 34 / .08); }
+    .nav.is-menu-open { background: transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
+    .nav-inner { height: 68px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: inline-flex; align-items: center; gap: .6rem; color: var(--ink); text-decoration: none; }
+    .logo svg { width: 30px; height: 30px; }
+    .logo-name { font-family: var(--font-display); font-size: 1.6rem; line-height: 1; }
+    .logo-tld { font: 500 .82rem var(--font-mono); color: var(--meadow-deep); }
+    .nav-links { display: none; gap: .2rem; }
+    .nav-link { padding: .5rem .85rem; border-radius: 999px; font: 400 .8rem var(--font-mono); color: var(--ink-soft); text-decoration: none; transition: color .25s, background-color .25s; }
+    .nav-link span { margin-right: .4rem; font-size: .68rem; color: var(--meadow-deep); }
+    .nav-link:hover { color: var(--ink); background: rgb(29 39 34 / .05); }
+    .nav-link.is-active { color: var(--ink); background: rgb(29 39 34 / .07); }
+    .menu-btn { display: inline-grid; place-content: center; gap: 5px; width: 44px; height: 44px; padding: 0; border: 1px solid rgb(29 39 34 / .18); border-radius: 50%; background: rgb(255 255 255 / .55); cursor: pointer; }
+    .menu-btn span { display: block; width: 18px; height: 1.5px; background: var(--ink); transition: transform .35s var(--ease); }
+    .menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(3.25px) rotate(45deg); }
+    .menu-btn[aria-expanded="true"] span:nth-child(2) { transform: translateY(-3.25px) rotate(-45deg); }
+
+    .menu {
+      position: fixed; inset: 0; z-index: 55; display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 1.75rem 11rem; background: var(--mist);
+      opacity: 0; visibility: hidden; transition: opacity .45s var(--ease), visibility 0s linear .45s;
+    }
+    .menu.is-open { opacity: 1; visibility: visible; transition: opacity .45s var(--ease); }
+    .menu a {
+      display: flex; align-items: baseline; gap: 1rem; padding: .35rem 0;
+      font-family: var(--font-display); font-size: clamp(2.6rem, 12vw, 3.6rem); line-height: 1.1;
+      color: var(--ink); text-decoration: none;
+      opacity: 0; transform: translateY(14px); transition: opacity .45s var(--ease), transform .6s var(--ease);
+    }
+    .menu.is-open a { opacity: 1; transform: none; transition-delay: calc(.08s + var(--i) * .06s); }
+    .menu a span { font: 400 .78rem var(--font-mono); color: var(--meadow-deep); }
+    .menu-note { margin-top: 2rem; font: 400 .78rem var(--font-mono); color: var(--ink-mute); }
+    .menu-range { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 150px; }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .menu-btn, .menu { display: none; }
+      .hero { --land-h: clamp(330px, 56svh, 640px); }
+    }
+
+    /* ---------- Hero: the summit view ---------- */
+    .hero {
+      --land-h: clamp(300px, 50svh, 560px);
+      position: relative; min-height: 100svh; overflow: hidden;
+      background: linear-gradient(180deg, #f9faf7 0%, #f2f4f0 45%, #e5eae5 100%);
+    }
+    .sky-glow { position: absolute; right: -6%; top: 4%; width: 60vmax; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgb(255 247 226 / .85), rgb(255 247 226 / 0) 60%); pointer-events: none; }
+    .hero-content { position: relative; z-index: 5; padding-top: calc(68px + clamp(2.25rem, 7vh, 5rem)); padding-bottom: calc(var(--land-h) * .74); }
+    .hero-copy { max-width: 35rem; }
+    .prompt { font: 400 .85rem var(--font-mono); color: var(--ink-mute); }
+    .prompt b { font-weight: 500; color: var(--meadow-deep); }
+    .hero h1 { margin-top: 1rem; font-family: var(--font-display); font-weight: 400; font-size: clamp(3.5rem, 9vw, 6.6rem); line-height: .96; letter-spacing: -.015em; }
+    .hero h1 em { color: var(--pine); }
+    .hero-lede { margin-top: 1.5rem; max-width: 34rem; color: var(--ink-soft); }
+    .hero-actions { margin-top: 2.1rem; display: flex; flex-wrap: wrap; gap: .85rem; }
+
+    .landscape { position: absolute; left: 0; right: 0; bottom: 0; height: var(--land-h); pointer-events: none; }
+    .layer { position: absolute; inset: 0 -40px; will-change: transform; }
+    .layer svg { width: 100%; height: 100%; }
+    .mist {
+      position: absolute; left: -20%; width: 140%; pointer-events: none; will-change: transform;
+      background:
+        radial-gradient(38% 60% at 18% 55%, rgb(249 250 247 / .95), rgb(249 250 247 / 0) 70%),
+        radial-gradient(30% 50% at 52% 45%, rgb(249 250 247 / .75), rgb(249 250 247 / 0) 70%),
+        radial-gradient(40% 60% at 86% 55%, rgb(249 250 247 / .9), rgb(249 250 247 / 0) 70%);
+      animation: mist-drift var(--dur, 60s) ease-in-out infinite alternate;
+    }
+    .mist--high { bottom: 30%; height: 26%; --dur: 70s; }
+    .mist--mid { bottom: 16%; height: 22%; --dur: 54s; opacity: .85; }
+    @media (max-width: 767px) { .mist--mid { bottom: 26%; height: 18%; opacity: .7; } }
+    .fog-bottom { position: absolute; left: 0; right: 0; bottom: 0; height: 56px; background: linear-gradient(180deg, rgb(244 245 241 / 0), var(--mist)); }
+
+    .birds { position: absolute; inset: 0; z-index: 2; pointer-events: none; color: rgb(29 39 34 / .5); }
+    .flock { position: absolute; left: 0; top: var(--top); animation: fly var(--dur) linear infinite; animation-delay: var(--delay); }
+    .bird { position: absolute; left: var(--x, 0); top: var(--y, 0); width: calc(22px * var(--s, 1)); height: auto; overflow: visible; animation: flap 3.4s ease-in-out infinite; animation-delay: var(--d, 0s); }
+    .soar { position: absolute; top: var(--top); left: var(--left); animation: soar-x 17s ease-in-out infinite alternate; }
+    .soar > div { animation: soar-y 17s ease-in-out infinite alternate; animation-delay: -8.5s; }
+    .soar .bird { position: relative; width: 26px; animation-duration: 7s; }
+
+    /* Hero intro (the failsafe names only matter if the script never runs) */
+    .js .intro { opacity: 0; animation: rise-failsafe 1s var(--ease) 6s both; }
+    .js .landscape .layer, .js .birds { animation: rise-failsafe 1.4s var(--ease) 6s both; }
+    .is-ready .intro { animation: rise 1.2s var(--ease) both; animation-delay: calc(var(--i, 0) * .12s + .15s); }
+    .is-ready .landscape .layer { animation: land-rise 1.8s var(--ease) both; animation-delay: calc(var(--i, 0) * .09s); }
+    .is-ready .birds { animation: fade-in 2s ease .8s both; }
+
+    /* ---------- About: the meadow ---------- */
+    .about { position: relative; overflow: hidden; padding: clamp(4rem, 9vw, 6.5rem) 0 clamp(8rem, 14vw, 10rem); background: var(--mist); }
+    .topo { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; color: #cfd6cd; -webkit-mask-image: linear-gradient(180deg, transparent, #000 18%, #000 70%, transparent); mask-image: linear-gradient(180deg, transparent, #000 18%, #000 70%, transparent); }
+    .topo path { fill: none; stroke: currentColor; vector-effect: non-scaling-stroke; }
+    .topo .minor { stroke-width: .8; opacity: .55; }
+    .topo .major { stroke-width: 1.1; opacity: .9; }
+    .about .container { position: relative; }
+    .about-grid { display: grid; gap: 2.75rem; margin-top: 2.75rem; }
+    .about-lede { font-family: var(--font-display); font-size: clamp(1.8rem, 3.3vw, 2.45rem); line-height: 1.25; color: var(--ink); }
+    .about-note { margin-top: 1.4rem; font: 400 .85rem var(--font-mono); color: var(--ink-mute); }
+
+    .term { overflow: hidden; color: #dde3dc; background: var(--forest); border-radius: 18px; box-shadow: var(--shadow-lg); }
+    .term-bar { display: flex; align-items: center; gap: .45rem; padding: .85rem 1.1rem; border-bottom: 1px solid rgb(255 255 255 / .07); }
+    .term-bar i { width: 10px; height: 10px; border-radius: 50%; background: rgb(255 255 255 / .16); }
+    .term-bar span { margin-left: .6rem; font: 400 .74rem var(--font-mono); color: rgb(221 227 220 / .55); }
+    .term pre { padding: 1.2rem 1.4rem 1.45rem; overflow-x: auto; font: 400 .82rem/1.75 var(--font-mono); }
+    .t-prompt { color: var(--meadow-2); }
+    .t-dir { font-weight: 600; color: var(--tent-light); }
+    .t-branch { color: rgb(221 227 220 / .35); }
+    .t-muted { color: rgb(221 227 220 / .5); }
+
+    .log { margin-top: clamp(3.5rem, 8vw, 5.5rem); max-width: 760px; }
+    .log-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 2rem; }
+    .log-head h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.9rem, 3.4vw, 2.5rem); line-height: 1.1; }
+    .log-cmd { font: 400 .8rem var(--font-mono); color: var(--ink-mute); }
+    .trail { position: relative; display: grid; gap: 1.25rem; margin-top: 1.75rem; }
+    .trail::before { content: ""; position: absolute; left: 10px; top: 1.6rem; bottom: 1.6rem; border-left: 2px dashed rgb(47 66 50 / .28); }
+    .trail-item { position: relative; margin-left: 2.6rem; padding: 1.35rem 1.5rem 1.45rem; background: rgb(255 255 255 / .72); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-sm); }
+    .trail-node { position: absolute; left: calc(-2.6rem + 2px); top: 1.55rem; width: 18px; height: 18px; border-radius: 50%; background: var(--mist); border: 2px solid var(--pine); box-shadow: 0 0 0 5px var(--mist); }
+    .trail-item:first-child .trail-node { background: var(--meadow); }
+    .trail-meta { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font: 400 .75rem var(--font-mono); color: var(--ink-mute); }
+    .trail-meta .hash { color: var(--tent); }
+    .trail-item h4 { margin-top: .45rem; font-family: var(--font-display); font-weight: 400; font-size: 1.65rem; line-height: 1.2; }
+    .trail-org { margin-top: .15rem; font-weight: 600; font-size: .98rem; }
+    .trail-desc { margin-top: .6rem; color: var(--ink-soft); }
+    .treeline { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: clamp(70px, 9vw, 110px); }
+
+    /* ---------- Projects: trails ---------- */
+    .projects { position: relative; overflow: hidden; padding: clamp(3rem, 7vw, 4.5rem) 0 clamp(4.5rem, 10vw, 7rem); background: linear-gradient(180deg, #e9ede6 0%, #e3e8e1 100%); }
+    .cards { display: grid; gap: 1.5rem; margin-top: 2.75rem; }
+    .card { position: relative; display: flex; flex-direction: column; overflow: hidden; background: #fbfbf8; border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow-sm); transition: transform .55s var(--ease), box-shadow .55s var(--ease), border-color .4s; }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: #c4ccc2; }
+    .profile { position: relative; height: 104px; padding-top: 22px; background: linear-gradient(180deg, #f1f3ee, #fbfbf8); border-bottom: 1px solid var(--line); }
+    .profile-plot { position: relative; height: 100%; }
+    .profile svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .js .profile-plot { clip-path: inset(0 100% 0 0); transition: clip-path 1.8s var(--ease) .25s; }
+    .js .card.is-visible .profile-plot { clip-path: inset(-30px 0 0 0); }
+    .pf-line { fill: none; stroke: var(--pine); stroke-width: 1.6; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+    .pf-grid { stroke: rgb(29 39 34 / .09); stroke-dasharray: 3 5; vector-effect: non-scaling-stroke; }
+    .summit { position: absolute; width: 14px; height: 20px; color: var(--tent); transform: translate(-1px, -100%); }
+    .summit svg { position: static; width: 100%; height: 100%; }
+    .profile-label { position: absolute; right: 1rem; top: .45rem; font: 400 .66rem var(--font-mono); letter-spacing: .08em; color: var(--ink-mute); }
+    .card-body { display: flex; flex: 1; flex-direction: column; gap: .75rem; padding: 1.4rem 1.5rem 1.55rem; }
+    .card-meta { display: flex; justify-content: space-between; gap: 1rem; font: 400 .75rem var(--font-mono); color: var(--ink-mute); }
+    .card-type { color: var(--meadow-deep); font-weight: 500; }
+    .card h3 { font-family: var(--font-display); font-weight: 400; font-size: 2rem; line-height: 1.08; }
+    .card p { color: var(--ink-soft); font-size: .98rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .tags li { padding: .28rem .7rem; font: 400 .72rem var(--font-mono); color: var(--ink-soft); background: #eef1ea; border: 1px solid #dde3da; border-radius: 999px; }
+    .card-link { align-self: flex-start; margin-top: auto; padding-top: .5rem; display: inline-flex; align-items: center; gap: .45rem; font: 500 .82rem var(--font-mono); color: var(--pine); text-decoration: none; }
+    .card-link span { transition: transform .35s var(--ease); }
+    .card-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .card-link:hover span { transform: translate(2px, -2px); }
+    .more { margin-top: 3.25rem; text-align: center; }
+    .more p { color: var(--ink-soft); }
+    .more .btn { margin-top: 1rem; }
+
+    /* ---------- Dusk & basecamp ---------- */
+    .dusk { position: relative; height: clamp(150px, 20vw, 240px); background: linear-gradient(180deg, #e3e8e1 0%, #c7d0ca 28%, #8e9c95 58%, #4b5b54 84%, #2e3d37 100%); }
+    .dusk .bird { color: rgb(29 39 34 / .45); }
+    .dusk-flock { position: absolute; left: 62%; top: 22%; animation: drift-home 9s ease-in-out infinite alternate; }
+
+    .basecamp { position: relative; overflow: hidden; color: var(--mist); background: linear-gradient(180deg, #2e3d37 0%, #25332d 55%, #1e2a25 100%); padding-top: clamp(2.5rem, 6vw, 4rem); }
+    .stars { position: absolute; inset: 0 0 38% 0; pointer-events: none; }
+    .stars i { position: absolute; border-radius: 50%; background: #f4f1e6; opacity: var(--o); animation: twinkle var(--d) ease-in-out infinite alternate; animation-delay: var(--delay); }
+    .moon { position: absolute; top: 1.4rem; right: 8%; width: 50px; height: 50px; border-radius: 50%; box-shadow: inset -12px 6px 0 0 #f2eedd; filter: drop-shadow(0 0 16px rgb(242 238 221 / .35)); transform: rotate(-18deg); pointer-events: none; }
+    .basecamp .eyebrow { color: rgb(244 245 241 / .6); }
+    .basecamp .eyebrow span { color: var(--meadow-2); }
+    .basecamp .section-title em { color: var(--meadow-2); }
+    .basecamp .section-sub { color: rgb(244 245 241 / .75); }
+    .camp-grid { position: relative; z-index: 3; display: grid; gap: 2.75rem; }
+    .camp-links { margin-top: 1.75rem; display: grid; gap: .6rem; font: 400 .85rem var(--font-mono); }
+    .camp-links a { color: rgb(244 245 241 / .85); text-decoration: none; border-bottom: 1px solid rgb(244 245 241 / .25); transition: color .25s, border-color .25s; }
+    .camp-links a:hover { color: #fff; border-color: var(--meadow-2); }
+
+    .note { overflow: hidden; color: var(--ink); background: var(--mist); border-radius: 22px; box-shadow: 0 40px 70px -40px rgb(0 0 0 / .75); }
+    .note-head { display: flex; justify-content: space-between; gap: 1rem; padding: .85rem 1.4rem; font: 400 .74rem var(--font-mono); color: var(--ink-mute); background: var(--mist-2); border-bottom: 1px solid var(--line); }
+    .field { display: grid; gap: .4rem; padding: 1.1rem 1.4rem 0; }
+    .field label { font: 500 .74rem var(--font-mono); letter-spacing: .04em; color: var(--ink-soft); }
+    .field input, .field textarea { width: 100%; padding: .85rem 1rem; background: #fff; border: 1px solid #d3dad1; border-radius: 12px; transition: border-color .25s, box-shadow .25s; }
+    .field textarea { min-height: 150px; resize: vertical; line-height: 1.6; }
+    .field input::placeholder, .field textarea::placeholder { color: #98a39c; }
+    .field input:focus, .field textarea:focus { outline: none; border-color: var(--pine-2); box-shadow: 0 0 0 4px rgb(143 170 50 / .25); }
+    .note-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.4rem 1.4rem; }
+    .status { font: 400 .78rem var(--font-mono); color: var(--ink-mute); }
+    .status.is-sent { color: var(--meadow-deep); font-weight: 500; }
+    .status.is-error { color: #a4452c; font-weight: 500; }
+
+    .camp { position: relative; height: clamp(220px, 27vw, 320px); margin-top: clamp(1.5rem, 5vw, 3.5rem); pointer-events: none; }
+    .camp svg[data-range] { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .tent { position: absolute; z-index: 2; left: clamp(1rem, 9vw, 9rem); bottom: 11%; width: clamp(128px, 15vw, 190px); }
+    .tent-door { animation: lantern 5s ease-in-out infinite alternate; }
+    .fire { position: absolute; z-index: 2; left: calc(clamp(1rem, 9vw, 9rem) + clamp(150px, 17vw, 215px)); bottom: 10%; width: clamp(58px, 6.5vw, 80px); overflow: visible; }
+    .flame { transform-box: fill-box; transform-origin: 50% 100%; animation: flicker 1.9s ease-in-out infinite; }
+    .flame-2 { animation-duration: 1.45s; animation-delay: -.5s; }
+    .flame-3 { animation-duration: 1.1s; animation-delay: -.25s; }
+    .glow { position: absolute; z-index: 1; border-radius: 50%; background: radial-gradient(closest-side, rgb(240 164 86 / .38), rgb(240 164 86 / 0)); animation: glow 3.2s ease-in-out infinite alternate; }
+    .glow--fire { left: calc(clamp(1rem, 9vw, 9rem) + clamp(150px, 17vw, 215px) - 90px); bottom: -8%; width: clamp(230px, 24vw, 300px); aspect-ratio: 1.4; }
+    .glow--tent { left: calc(clamp(1rem, 9vw, 9rem) - 30px); bottom: 0; width: clamp(200px, 22vw, 260px); aspect-ratio: 1.6; opacity: .6; animation-duration: 5s; }
+    .spark { position: absolute; z-index: 2; bottom: calc(10% + 40px); left: calc(clamp(1rem, 9vw, 9rem) + clamp(150px, 17vw, 215px) + 30px); width: 3px; height: 3px; border-radius: 50%; background: #ffd58a; opacity: 0; animation: spark 3.2s ease-out infinite; animation-delay: var(--delay); }
+
+    .footer { color: rgb(244 245 241 / .7); background: var(--night); padding: 1.9rem 0 2.3rem; font-size: .9rem; }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem 2rem; }
+    .footer-note { font: 400 .78rem var(--font-mono); color: rgb(244 245 241 / .5); }
+    .footer-links { display: flex; gap: 1.4rem; font: 400 .82rem var(--font-mono); }
+    .footer-links a { color: var(--mist); text-decoration: none; border-bottom: 1px solid rgb(244 245 241 / .25); transition: border-color .25s; }
+    .footer-links a:hover { border-color: var(--meadow-2); }
+
+    /* ---------- Larger screens ---------- */
+    @media (min-width: 860px) {
+      .cards { grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+    }
+    @media (min-width: 960px) {
+      .hero-content { padding-bottom: calc(var(--land-h) * .46); }
+      .about-grid { grid-template-columns: 1.05fr .95fr; gap: 4.5rem; align-items: start; }
+      .camp-grid { grid-template-columns: .85fr 1.15fr; gap: 4.5rem; align-items: start; }
+      .moon { top: 3rem; right: auto; left: 40%; }
+    }
+
+    /* ---------- Keyframes ---------- */
+    @keyframes blink { 50% { opacity: 0; } }
+    @keyframes failsafe-hide { to { opacity: 0; visibility: hidden; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @keyframes rise-failsafe { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes land-rise { from { opacity: 0; translate: 0 36px; } to { opacity: 1; translate: 0 0; } }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes mist-drift { from { translate: -5% 0; } to { translate: 5% 0; } }
+    @keyframes fly { from { transform: translate3d(-12vw, 0, 0); } to { transform: translate3d(112vw, -36px, 0); } }
+    @keyframes flap { 0%, 58%, 100% { transform: scaleY(1); } 66%, 82% { transform: scaleY(.3); } 74%, 90% { transform: scaleY(1); } }
+    @keyframes soar-x { from { transform: translateX(-70px); } to { transform: translateX(70px); } }
+    @keyframes soar-y { from { transform: translateY(-20px); } to { transform: translateY(20px); } }
+    @keyframes drift-home { from { transform: translate(-10px, 4px); } to { transform: translate(10px, -4px); } }
+    @keyframes twinkle { to { opacity: calc(var(--o) * .3); } }
+    @keyframes flicker { 0%, 100% { transform: scaleY(1) skewX(0); } 30% { transform: scaleY(1.08) skewX(-2deg); } 55% { transform: scaleY(.93) skewX(2deg); } 80% { transform: scaleY(1.04) skewX(-1deg); } }
+    @keyframes glow { from { opacity: .75; transform: scale(.97); } to { opacity: 1; transform: scale(1.03); } }
+    @keyframes lantern { from { opacity: .85; } to { opacity: 1; } }
+    @keyframes spark { 0% { opacity: 0; transform: translate(0, 0); } 15% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--dx, 8px), -70px); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .birds, .dusk-flock, .spark { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared shapes: a grazing horse and a gliding bird -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <g id="horse">
+        <path d="M11.5 10.5c0-3.3 4.8-5.5 10.8-5.5s10.7 2.2 10.7 5.5-4.8 5.3-10.7 5.3-10.8-2-10.8-5.3Z" />
+        <path d="M13.2 7.4 16.8 10.8 8.4 21.2 5.2 19.6Z" />
+        <path d="M2.6 18.6c1-1.2 2.9-1.1 4.4-.3l2.2 1.5c.6 1.3-.3 2.9-2 3.1l-3.2.3c-1.9.1-2.6-2.9-1.4-4.6Z" />
+        <path d="M13.5 13.5h2V26h-2ZM17.2 14h2v12h-2ZM27.4 14h2v12h-2ZM30.8 13.2h2V26h-2Z" />
+        <path d="M32.6 8.2c2.9.6 4.1 3.4 3.2 9.8-.2 1-1.4 1.1-1.5.1-.3-3.4-.7-6.1-2.4-7.5Z" />
+      </g>
+      <path id="bird" d="M1 7Q6 1.5 12 6Q18 1.5 23 7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+    </defs>
+  </svg>
+
+  <!-- Loader: types <Hello World/> while a ridge line draws itself, then the fog lifts -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div>
+      <p class="loader-text"><span id="loader-typed"></span><span class="caret"></span></p>
+      <svg class="loader-ridge" viewBox="0 0 230 44"><path id="loader-ridge" pathLength="1" d="M2 40 26 26l12 6 22-22 16 12 14-7 22 19 20-24 16 11 12-6 18 17 14-6 20 17" /></svg>
+      <p class="loader-note">acclimatizing…</p>
+    </div>
+  </div>
+
+  <a class="skip-link" href="#about">Skip to content</a>
+
+  <!-- ============================ NAVIGATION ============================ -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#home" aria-label="Vasilis.dev — back to top">
+        <svg viewBox="0 0 30 30" aria-hidden="true">
+          <path d="M1 25 10.5 9l4.5 6 5.5-10L29 25Z" fill="#2f4232" />
+          <path d="m20.5 5 3 5.4-2-.9-2 2-1.6-2.6Zm-10 4 2.2 3.4-1.7-.5-1.6 1.6-.7-1.7Z" fill="#f6f5f0" />
+          <path d="M0 25q8-4 15-1t15-1v4H0Z" fill="#8faa32" />
+        </svg>
+        <span><span class="logo-name">Vasilis</span><span class="logo-tld">.dev</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main">
+        <a class="nav-link is-active" href="#home"><span>01</span>Home</a>
+        <a class="nav-link" href="#about"><span>02</span>About</a>
+        <a class="nav-link" href="#projects"><span>03</span>Projects</a>
+        <a class="nav-link" href="#contact"><span>04</span>Contact</a>
+      </nav>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu" id="mobile-menu" inert>
+    <nav aria-label="Mobile">
+      <a href="#home" style="--i:0"><span>01</span>Home</a>
+      <a href="#about" style="--i:1"><span>02</span>About</a>
+      <a href="#projects" style="--i:2"><span>03</span>Projects</a>
+      <a href="#contact" style="--i:3"><span>04</span>Contact</a>
+    </nav>
+    <p class="menu-note">~/trail $ echo "thanks for stopping by"</p>
+    <svg class="menu-range" data-range="menu" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div>
+
+  <main>
+    <!-- ============================== HERO ============================== -->
+    <section id="home" class="hero">
+      <div class="sky-glow" aria-hidden="true"></div>
+
+      <div class="birds" aria-hidden="true">
+        <div class="flock" style="--top:17%; --dur:95s; --delay:-32s">
+          <svg class="bird" viewBox="0 0 24 10" style="--s:1"><use href="#bird" /></svg>
+          <svg class="bird" viewBox="0 0 24 10" style="--x:-26px; --y:12px; --s:.85; --d:-.7s"><use href="#bird" /></svg>
+          <svg class="bird" viewBox="0 0 24 10" style="--x:-50px; --y:23px; --s:.78; --d:-1.4s"><use href="#bird" /></svg>
+          <svg class="bird" viewBox="0 0 24 10" style="--x:-23px; --y:-12px; --s:.8; --d:-1s"><use href="#bird" /></svg>
+          <svg class="bird" viewBox="0 0 24 10" style="--x:-47px; --y:-22px; --s:.7; --d:-1.9s"><use href="#bird" /></svg>
+        </div>
+        <div class="flock" style="--top:13%; --dur:130s; --delay:-95s">
+          <svg class="bird" viewBox="0 0 24 10" style="--s:.75"><use href="#bird" /></svg>
+          <svg class="bird" viewBox="0 0 24 10" style="--x:-22px; --y:9px; --s:.65; --d:-1.2s"><use href="#bird" /></svg>
+        </div>
+        <div class="soar" style="--top:27%; --left:72%"><div><svg class="bird" viewBox="0 0 24 10"><use href="#bird" /></svg></div></div>
+      </div>
+
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <p class="prompt intro" style="--i:0"><b>vasilis@summit</b>:~$ whoami<span class="caret" aria-hidden="true"></span></p>
+          <h1 class="intro" style="--i:1">Hi, I'm<br /><em>Vasilis!</em></h1>
+          <p class="hero-lede intro" style="--i:2">
+            Bachelor's degree in Computer Science at the University of Piraeus with a strong passion for programming and
+            building meaningful applications. I enjoy turning ideas into real-world solutions through code and constantly seek
+            opportunities to expand my knowledge and skills in software development. Whether it's developing mobile apps,
+            crafting web experiences, or exploring new technologies.
+          </p>
+          <div class="hero-actions intro" style="--i:3">
+            <a class="btn btn-primary" href="#projects">View Projects
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" /></svg>
+            </a>
+            <a class="btn btn-ghost" href="#contact">Contact Me</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mountains are drawn by the script below, back to front -->
+      <div class="landscape" aria-hidden="true">
+        <div class="layer" data-depth="0" style="--i:0"><svg data-range="far" preserveAspectRatio="none"></svg></div>
+        <div class="mist mist--high" data-depth=".1"></div>
+        <div class="layer" data-depth=".15" style="--i:1"><svg data-range="massif" preserveAspectRatio="none"></svg></div>
+        <div class="mist mist--mid" data-depth=".3"></div>
+        <div class="layer" data-depth=".35" style="--i:2"><svg data-range="ridge" preserveAspectRatio="none"></svg></div>
+        <div class="layer" data-depth=".6" style="--i:3"><svg data-range="forest" preserveAspectRatio="none"></svg></div>
+        <div class="layer" data-depth="1" style="--i:4"><svg data-range="meadow" preserveAspectRatio="none"></svg></div>
+        <div class="fog-bottom"></div>
+      </div>
+    </section>
+
+    <!-- ============================== ABOUT ============================== -->
+    <section id="about" class="about">
+      <svg class="topo" data-topo="7" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <div class="container">
+        <header class="reveal">
+          <p class="eyebrow"><span>02</span>~/about</p>
+          <h2 class="section-title">About <em>Me</em></h2>
+        </header>
+
+        <div class="about-grid">
+          <div class="reveal">
+            <p class="about-lede">I'm passionate about coding and love bringing ideas to life through software. Creating useful, impactful applications is what drives me every day.</p>
+            <p class="about-note">// off the keyboard: usually somewhere above the treeline</p>
+          </div>
+
+          <figure class="term reveal" style="--delay:.1s">
+            <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>~/backpack</span></div>
+            <pre aria-hidden="true"><code><span class="t-prompt">$</span> tree ~/backpack
+<span class="t-dir">backpack/</span>
+<span class="t-branch">├──</span> <span class="t-dir">frontend/</span>
+<span class="t-branch">│   ├──</span> React
+<span class="t-branch">│   ├──</span> TailwindCSS
+<span class="t-branch">│   ├──</span> HTML
+<span class="t-branch">│   ├──</span> CSS
+<span class="t-branch">│   └──</span> JavaScript
+<span class="t-branch">└──</span> <span class="t-dir">backend/</span>
+<span class="t-branch">    ├──</span> Python
+<span class="t-branch">    ├──</span> Java
+<span class="t-branch">    ├──</span> C#
+<span class="t-branch">    ├──</span> MySQL
+<span class="t-branch">    ├──</span> PostgreSQL
+<span class="t-branch">    ├──</span> Firebase
+<span class="t-branch">    ├──</span> REST APIs
+<span class="t-branch">    └──</span> Flask
+
+<span class="t-muted">2 directories, 13 files</span></code></pre>
+            <figcaption class="visually-hidden">Skills. Frontend: React, TailwindCSS, HTML, CSS, JavaScript. Backend: Python, Java, C#, MySQL, PostgreSQL, Firebase, REST APIs, Flask.</figcaption>
+          </figure>
+        </div>
+
+        <div class="log">
+          <div class="log-head reveal">
+            <h3>The trail so far</h3>
+            <p class="log-cmd" aria-hidden="true">$ git log --graph --oneline</p>
+          </div>
+          <ol class="trail">
+            <li class="trail-item reveal">
+              <span class="trail-node" aria-hidden="true"></span>
+              <p class="trail-meta"><span class="hash" aria-hidden="true">e4c21a7</span><span>2021 — 2025</span><span>education</span></p>
+              <h4>Undergraduate in Computer Science</h4>
+              <p class="trail-org">University of Piraeus</p>
+            </li>
+            <li class="trail-item reveal" style="--delay:.08s">
+              <span class="trail-node" aria-hidden="true"></span>
+              <p class="trail-meta"><span class="hash" aria-hidden="true">9b3f0d2</span><span>2023 — 2024</span><span>work</span></p>
+              <h4>Junior IT Associate</h4>
+              <p class="trail-org">ZERONET (Θ. Παπαπασχάλης - Ι. Πεσλής Ο.Ε.)</p>
+              <p class="trail-desc">Managed Microsoft systems including Azure AD, configured and maintained professional IT equipment, and supported network management and troubleshooting.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <svg class="treeline" data-range="treeline" preserveAspectRatio="none" aria-hidden="true"></svg>
+    </section>
+
+    <!-- ============================= PROJECTS ============================= -->
+    <!-- To add a project, copy one <article class="card"> block. The elevation
+         profile on top is generated from the data-seed text. -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <header class="reveal">
+          <p class="eyebrow"><span>03</span>~/projects</p>
+          <h2 class="section-title">Projects</h2>
+          <p class="section-sub">A few trails I've mapped out in code.</p>
+        </header>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="profile" data-seed="FridgeChef"></div>
+            <div class="card-body">
+              <p class="card-meta"><span class="card-type">Mobile Development</span><span>2025</span></p>
+              <h3>FridgeChef</h3>
+              <p>FridgeChef is a smart Android app that helps users find delicious recipes based on the ingredients in their virtual pantry, with features like ingredient image recognition, step-by-step cooking instructions, and easy recipe sharing via social media.</p>
+              <ul class="tags"><li>Java</li><li>Android Studio</li><li>REST APIs</li><li>Firebase</li></ul>
+              <a class="card-link" href="https://github.com/VasilisVas1/FridgeChef" target="_blank" rel="noopener noreferrer">Source Code <span aria-hidden="true">↗</span><span class="visually-hidden"> of FridgeChef on GitHub</span></a>
+            </div>
+          </article>
+
+          <article class="card reveal" style="--delay:.08s">
+            <div class="profile" data-seed="Fever Dream"></div>
+            <div class="card-body">
+              <p class="card-meta"><span class="card-type">Game Development</span><span>2025</span></p>
+              <h3>Fever Dream</h3>
+              <p>Fever Dream is a 3D adventure game developed in Unity using C# for Brackeys Game Jam 2025.1. The game follows a lumberjack on his journey to his cave for a nap, where unexpected challenges arise, aligning with the jam's theme, 'Nothing Can Go Wrong'.</p>
+              <ul class="tags"><li>C#</li><li>Unity</li></ul>
+              <a class="card-link" href="https://github.com/VasilisVas1/Brackeys_GameJam" target="_blank" rel="noopener noreferrer">Source Code <span aria-hidden="true">↗</span><span class="visually-hidden"> of Fever Dream on GitHub</span></a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="profile" data-seed="Pokemon Battle Prediction"></div>
+            <div class="card-body">
+              <p class="card-meta"><span class="card-type">Machine Learning</span><span>2025</span></p>
+              <h3>Pokemon Battle Prediction</h3>
+              <p>A comprehensive machine learning project that predicts Pokemon battle outcomes using statistical analysis and advanced feature engineering techniques.</p>
+              <ul class="tags"><li>Python</li><li>Jupyter Notebook</li><li>Pandas</li><li>Matplotlib</li><li>Numpy</li><li>Seaborn</li></ul>
+              <a class="card-link" href="https://github.com/VasilisVas1/pokemon-battle-prediction" target="_blank" rel="noopener noreferrer">Source Code <span aria-hidden="true">↗</span><span class="visually-hidden"> of Pokemon Battle Prediction on GitHub</span></a>
+            </div>
+          </article>
+
+          <article class="card reveal" style="--delay:.08s">
+            <div class="profile" data-seed="Research ArXiv Assistant"></div>
+            <div class="card-body">
+              <p class="card-meta"><span class="card-type">AI Agents</span><span>2025</span></p>
+              <h3>Research ArXiv Assistant</h3>
+              <p>An intelligent multi-agent system that automatically conducts literature reviews, searches academic papers, and generates professional PDF reports.</p>
+              <ul class="tags"><li>Python</li><li>AI agents</li><li>Open Router</li><li>Flask</li></ul>
+              <a class="card-link" href="https://github.com/VasilisVas1/research-arxiv-assistant" target="_blank" rel="noopener noreferrer">Source Code <span aria-hidden="true">↗</span><span class="visually-hidden"> of Research ArXiv Assistant on GitHub</span></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="more reveal">
+          <p>Want to see more of my work?</p>
+          <a class="btn btn-ghost" href="https://github.com/VasilisVas1" target="_blank" rel="noopener noreferrer">View All Projects
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 13 15 5M8 5h7v7" /></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Evening falls on the way down to basecamp -->
+    <div class="dusk" aria-hidden="true">
+      <div class="dusk-flock">
+        <svg class="bird" viewBox="0 0 24 10" style="--s:.8"><use href="#bird" /></svg>
+        <svg class="bird" viewBox="0 0 24 10" style="--x:-24px; --y:10px; --s:.65; --d:-1.1s"><use href="#bird" /></svg>
+      </div>
+    </div>
+
+    <!-- ============================= CONTACT ============================= -->
+    <section id="contact" class="basecamp">
+      <div class="stars" aria-hidden="true"></div>
+      <div class="moon" aria-hidden="true"></div>
+
+      <div class="container camp-grid">
+        <div class="reveal">
+          <p class="eyebrow"><span>04</span>~/basecamp</p>
+          <h2 class="section-title">Get In <em>Touch</em></h2>
+          <p class="section-sub">Leave a note at basecamp and I'll get back to you soon.</p>
+          <ul class="camp-links">
+            <li><a href="https://github.com/VasilisVas1" target="_blank" rel="noopener noreferrer">github.com/VasilisVas1 ↗</a></li>
+          </ul>
+        </div>
+
+        <form class="note reveal" id="contact-form" style="--delay:.1s">
+          <div class="note-head" aria-hidden="true"><span>new_message.txt</span><span>to: vasilis</span></div>
+          <div class="field">
+            <label for="name">name</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Name..." required />
+          </div>
+          <div class="field">
+            <label for="email">email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="example@gmail.com" required />
+          </div>
+          <div class="field">
+            <label for="message">message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your Message..." required></textarea>
+          </div>
+          <div class="note-foot">
+            <p class="status" id="form-status" role="status" aria-live="polite">// all fields are required</p>
+            <button class="btn btn-primary" type="submit">Send Message</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="camp" aria-hidden="true">
+        <svg data-range="campFar" preserveAspectRatio="none"></svg>
+        <svg data-range="campNear" preserveAspectRatio="none"></svg>
+        <div class="glow glow--tent"></div>
+        <svg class="tent" viewBox="0 0 180 110">
+          <defs>
+            <radialGradient id="tent-light" cx="50%" cy="88%" r="75%">
+              <stop offset="0" stop-color="#ffe9b8" />
+              <stop offset=".55" stop-color="#f0b266" />
+              <stop offset="1" stop-color="#a0602c" />
+            </radialGradient>
+          </defs>
+          <path d="M46 42 4 106M134 42l42 64" stroke="#8fa39a" stroke-opacity=".35" />
+          <path d="M16 105C24 58 54 22 90 20c36 2 66 38 74 85Z" fill="#2e5fa8" />
+          <path d="M16 105C24 58 54 22 90 20 70 31 52 63 46 105Z" fill="#244e8f" />
+          <path d="M164 105c-8-47-38-83-74-85 20 11 38 43 44 85Z" fill="#3a6db8" />
+          <path class="tent-door" d="M90 34c-10 22-20 48-28 71h56c-8-23-18-49-28-71Z" fill="url(#tent-light)" />
+          <path d="M90 34c-10 22-20 48-28 71" fill="none" stroke="#1c3e73" stroke-width="2.5" />
+          <ellipse cx="90" cy="106" rx="80" ry="4" fill="#0e1512" opacity=".6" />
+        </svg>
+        <div class="glow glow--fire"></div>
+        <svg class="fire" viewBox="0 0 90 80">
+          <path class="flame" d="M45 66C27 60 30 42 41 26c0 12 9 14 6-4 15 12 19 36-2 44Z" fill="#e8893a" />
+          <path class="flame flame-2" d="M45 66c-11-4-10-16-1-28 2 9 8 9 6 0 9 11 8 24-5 28Z" fill="#f6c453" />
+          <path class="flame flame-3" d="M45 66c-6-3-5-10 0-16 5 6 6 13 0 16Z" fill="#fff1c4" />
+          <path d="M26 70 64 60" stroke="#5b3b24" stroke-width="6" stroke-linecap="round" />
+          <path d="M28 60 64 70" stroke="#6e472a" stroke-width="6" stroke-linecap="round" />
+          <g fill="#6f746f">
+            <ellipse cx="9" cy="69" rx="6" ry="4.5" />
+            <ellipse cx="18" cy="72" rx="9" ry="5.5" />
+            <ellipse cx="33" cy="75" rx="10" ry="5" />
+            <ellipse cx="50" cy="75.5" rx="10" ry="5" />
+            <ellipse cx="66" cy="73" rx="9.5" ry="5.5" />
+            <ellipse cx="78" cy="70" rx="6.5" ry="4.5" />
+          </g>
+          <g fill="#8a8f89">
+            <ellipse cx="18" cy="70" rx="5" ry="2" />
+            <ellipse cx="50" cy="73.5" rx="5.5" ry="2" />
+            <ellipse cx="66" cy="71" rx="5" ry="2" />
+          </g>
+        </svg>
+        <span class="spark" style="--delay:0s; --dx:6px"></span>
+        <span class="spark" style="--delay:-1.1s; --dx:-8px"></span>
+        <span class="spark" style="--delay:-2.2s; --dx:12px"></span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> Vasilis Vasileiou</p>
+      <p class="footer-note">// hand-coded in plain HTML, CSS &amp; JS</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://github.com/VasilisVas1" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="#home">Back to the summit ↑</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* EmailJS keys for the contact form. They are public by design (they ship to every
+         visitor's browser); limit them to your domain in the EmailJS dashboard. */
+      const EMAILJS = {
+        publicKey: 'RwcwFZ_6Ytsx4PU_C',
+        serviceId: 'service_z6bhvkp',
+        templateId: 'template_bcz2pke',
+      };
+
+      /* ---------------- Loader ---------------- */
+      const loader = document.getElementById('loader');
+      const typed = document.getElementById('loader-typed');
+      const loaderRidge = document.getElementById('loader-ridge');
+      const greeting = '<Hello World/>';
+      let typedCount = 0;
+      const finishLoading = () => {
+        loader.classList.add('is-done');
+        root.classList.remove('is-loading');
+        root.classList.add('is-ready');
+        setTimeout(() => loader.remove(), 1000);
+      };
+      const typing = setInterval(() => {
+        typedCount += 1;
+        typed.textContent = greeting.slice(0, typedCount);
+        loaderRidge.style.strokeDashoffset = String(1 - typedCount / greeting.length);
+        if (typedCount >= greeting.length) {
+          clearInterval(typing);
+          setTimeout(finishLoading, reduceMotion ? 100 : 450);
+        }
+      }, reduceMotion ? 25 : 80);
+
+      /* ---------------- Reveal on scroll ---------------- */
+      const revealObserver = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+      /* ---------------- Navigation ---------------- */
+      const nav = document.querySelector('.nav');
+      const onScroll = () => nav.classList.toggle('is-solid', window.scrollY > 12);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      const navLinks = [...document.querySelectorAll('.nav-link')];
+      const spy = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          for (const link of navLinks) {
+            const active = link.getAttribute('href') === `#${entry.target.id}`;
+            link.classList.toggle('is-active', active);
+            if (active) link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
+          }
+        }
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      document.querySelectorAll('main section[id]').forEach((section) => spy.observe(section));
+
+      const menuButton = document.querySelector('.menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const setMenu = (open) => {
+        menu.classList.toggle('is-open', open);
+        menu.inert = !open;
+        nav.classList.toggle('is-menu-open', open);
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.body.style.overflow = open ? 'hidden' : '';
+      };
+      menuButton.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
+      menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+      window.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
+
+      /* ---------------- Seeded noise ---------------- */
+      const mulberry32 = (seed) => () => {
+        seed = (seed + 0x6d2b79f5) | 0;
+        let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+      const hashString = (text) => {
+        let h = 2166136261;
+        for (const char of text) h = Math.imul(h ^ char.charCodeAt(0), 16777619);
+        return h >>> 0;
+      };
+      const noise1D = (seed) => {
+        const rand = mulberry32(seed);
+        const values = Array.from({ length: 256 }, rand);
+        return (x) => {
+          const i = Math.floor(x);
+          const f = x - i;
+          const a = values[i & 255];
+          return a + (values[(i + 1) & 255] - a) * f * f * (3 - 2 * f);
+        };
+      };
+      const fbm = (noise, x, octaves) => {
+        let sum = 0, amp = 1, norm = 0, freq = 1;
+        for (let o = 0; o < octaves; o++) {
+          sum += amp * noise(x * freq + o * 17.3);
+          norm += amp;
+          amp *= 0.5;
+          freq *= 2;
+        }
+        return sum / norm;
+      };
+      const noise2D = (seed) => {
+        const rand = mulberry32(seed);
+        const values = Float32Array.from({ length: 256 }, () => rand());
+        const order = Array.from({ length: 256 }, (_, i) => i);
+        for (let i = 255; i > 0; i--) {
+          const j = Math.floor(rand() * (i + 1));
+          [order[i], order[j]] = [order[j], order[i]];
+        }
+        const perm = Uint8Array.from({ length: 512 }, (_, i) => order[i & 255]);
+        const at = (x, y) => values[perm[(perm[x & 255] + (y & 255)) & 511]];
+        return (x, y) => {
+          const xi = Math.floor(x), yi = Math.floor(y);
+          const xf = x - xi, yf = y - yi;
+          const u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
+          const a = at(xi, yi), b = at(xi + 1, yi), c = at(xi, yi + 1), d = at(xi + 1, yi + 1);
+          return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+        };
+      };
+      const lerp = (a, b, t) => a + (b - a) * t;
+      const fmt = (n) => Math.round(n * 10) / 10;
+
+      /* ---------------- Mountain ranges ----------------
+         Heights are fractions of the layer's height, measured from the bottom.
+         peaks: [x, height, left half-width, right half-width] (widths relative to max(width, 760px)). */
+      const RANGES = {
+        far: { seed: 11, base: .36, amp: .14, freq: 1 / 230, rough: .3, peaks: [[.14, .2, .18, .2], [.44, .1, .14, .16], [.9, .22, .22, .16]], fill: ['#cad3cf', '#dde3df'] },
+        massif: {
+          seed: 29, base: .2, amp: .08, freq: 1 / 160, rough: .32, sharp: 1.25,
+          peaks: [[.7, .58, .2, .14], [.8, .46, .07, .12], [.61, .34, .08, .07], [.92, .28, .08, .16]],
+          fill: ['#6a706b', '#a2a8a2'], shade: .1, snow: { line: .6, streaks: 26, color: '#f6f5f0' },
+        },
+        ridge: { seed: 37, base: .17, amp: .12, freq: 1 / 210, rough: .3, peaks: [[.07, .2, .12, .2], [.36, .1, .15, .2], [.98, .14, .2, .1]], fill: ['#8a998f', '#a7b3aa'], trees: { gap: [16, 44], height: [8, 16] } },
+        forest: { seed: 43, base: .1, amp: .07, freq: 1 / 190, rough: .2, peaks: [[0, .12, .1, .28], [.64, .05, .2, .2], [1, .09, .22, .1]], fill: ['#3d5344', '#4b6352'], trees: { gap: [7, 15], height: [13, 30] } },
+        meadow: {
+          seed: 53, base: .06, amp: .06, freq: 1 / 420, rough: .04, sharp: 2, peaks: [[.28, .09, .5, .45]], fill: ['#a8bf49', '#7f9b2f'],
+          // [x, depth down the slope 0–1, size, colour, facing right?]
+          horses: [[.12, .35, .95, '#6e4a2f'], [.18, .6, 1.05, '#3a2f29', true], [.25, .28, .8, '#e6e2d8'], [.31, .66, 1.15, '#7b5234'], [.55, .42, .85, '#2f2a26', true], [.6, .6, 1, '#6e4a2f'], [.635, .7, .7, '#8a5c39', true], [.84, .46, .95, '#3a2f29']],
+        },
+        treeline: { seed: 61, base: .04, amp: .1, freq: 1 / 260, rough: .1, peaks: [], fill: ['#e9ede6', '#e9ede6'], trees: { gap: [6, 16], height: [16, 58] } },
+        campFar: { seed: 71, base: .4, amp: .16, freq: 1 / 220, rough: .3, peaks: [[.22, .26, .2, .22], [.74, .32, .18, .2]], fill: ['#2a3832', '#2d3b35'] },
+        campNear: { seed: 83, base: .14, amp: .08, freq: 1 / 200, rough: .15, peaks: [[.02, .12, .1, .2], [.95, .16, .2, .1]], fill: ['#1b2620', '#19231e'], trees: { gap: [8, 20], height: [18, 46] } },
+        menu: { seed: 97, base: .18, amp: .2, freq: 1 / 180, rough: .4, peaks: [[.3, .35, .2, .2], [.72, .5, .15, .2]], fill: ['#d3dad4', '#e4e8e3'], trees: { gap: [10, 24], height: [10, 22] } },
+      };
+
+      // Stylised fir: a narrow tiered triangle standing on (x, y).
+      const PINE = [[0, -1], [.12, -.72], [.07, -.72], [.2, -.44], [.11, -.44], [.27, -.12], [.04, -.12], [.04, .06], [-.04, .06], [-.04, -.12], [-.27, -.12], [-.11, -.44], [-.2, -.44], [-.07, -.72], [-.12, -.72]];
+      const pinePath = (x, y, h) => `M${PINE.map(([px, py]) => `${fmt(x + px * h)} ${fmt(y + py * h)}`).join('L')}Z`;
+
+      // Every range is composed on a panorama at least 760px wide; narrow screens see a
+      // window onto its right-centre, so peaks keep their shape instead of turning into spires.
+      const panorama = (width) => {
+        const span = Math.max(width, 760);
+        return { span, offset: (span - width) * .62, lift: width < 700 ? .78 : 1 };
+      };
+
+      const ridgePoints = (cfg, width, height) => {
+        const noise = noise1D(cfg.seed);
+        const { span, offset, lift } = panorama(width);
+        const step = 4;
+        const points = [];
+        for (let x = 0; x <= width + step; x += step) {
+          const vx = x + offset;
+          let h = cfg.base + cfg.amp * fbm(noise, vx * cfg.freq, 4);
+          for (const [px, ph, wl, wr] of cfg.peaks) {
+            const dx = vx - px * span;
+            const k = 1 - Math.abs(dx) / ((dx < 0 ? wl : wr) * span);
+            if (k > 0) h += ph * lift * Math.pow(k, cfg.sharp ?? 1.4);
+          }
+          h += cfg.rough * cfg.amp * (fbm(noise, vx * cfg.freq * 7 + 50, 3) - .5);
+          points.push([x, height * (1 - h)]);
+        }
+        return points;
+      };
+
+      // A thin cap on the highest ground, plus narrow snow streaks down the gullies.
+      const snowPath = (cfg, points, height) => {
+        const noise = noise1D(cfg.seed + 5);
+        const rand = mulberry32(cfg.seed + 9);
+        const line = height * (1 - cfg.snow.line);
+        let d = '';
+        let run = [];
+        const flush = () => {
+          if (run.length > 2) {
+            d += `M${run.map(([x, y]) => `${fmt(x)} ${fmt(y)}`).join('L')}L${run.slice().reverse().map(([x, , b]) => `${fmt(x)} ${fmt(b)}`).join('L')}Z`;
+          }
+          run = [];
+        };
+        const high = [];
+        points.forEach(([x, y], i) => {
+          const above = line - y;
+          if (above > 0) high.push(i);
+          const thick = above > 0 ? above * (.12 + .3 * fbm(noise, x * .05, 2)) : 0;
+          if (thick > 1) run.push([x, y, y + thick]);
+          else flush();
+        });
+        flush();
+        for (let n = 0; n < cfg.snow.streaks && high.length; n++) {
+          const [x, top] = points[high[Math.floor(rand() * high.length)]];
+          const length = height * (.05 + rand() * .17);
+          const w = 2.5 + rand() * 7;
+          const lean = (rand() - .5) * w * 1.6;
+          const y = top + 3 + rand() * height * .04;
+          d += `M${fmt(x - w * .35)} ${fmt(y)}L${fmt(x + w * .4)} ${fmt(y)}L${fmt(x + w * .5 + lean * .4)} ${fmt(y + length * .45)}L${fmt(x + lean + w * .12)} ${fmt(y + length)}L${fmt(x + lean - w * .15)} ${fmt(y + length * .82)}L${fmt(x - w * .5 + lean * .3)} ${fmt(y + length * .42)}Z`;
+        }
+        return d;
+      };
+
+      // A shadowed facet under the right-hand slope of each summit: from the summit down the
+      // ridge to the next valley, closing at a point below, like the faces of a real peak.
+      const shadePath = (cfg, points, width, height) => {
+        const step = points[1][0] - points[0][0];
+        const smooth = (i) => {
+          let sum = 0, n = 0;
+          for (let k = i - 4; k <= i + 4; k++) if (points[k]) { sum += points[k][1]; n++; }
+          return sum / n;
+        };
+        const { span, offset } = panorama(width);
+        let d = '';
+        for (const [px] of cfg.peaks) {
+          let s = Math.round((px * span - offset) / step);
+          if (s < 0 || s >= points.length) continue;
+          for (let k = Math.max(0, s - 14); k < Math.min(points.length, s + 14); k++) if (points[k][1] < points[s][1]) s = k;
+          let v = s;
+          while (v < points.length - 5 && smooth(v + 4) >= smooth(v) - .5) v += 4;
+          if (v - s < 3) continue;
+          const [sx, sy] = points[s];
+          const [vx, vy] = points[v];
+          const gx = sx + (vx - sx) * .55;
+          const gy = Math.min(height, Math.max(sy, vy) + (vx - sx) * .9);
+          d += `M${points.slice(s, v + 1).map(([x, y]) => `${fmt(x)} ${fmt(y)}`).join('L')}L${fmt(gx)} ${fmt(gy)}Z`;
+        }
+        return d;
+      };
+
+      const treesPath = (cfg, points, width) => {
+        const rand = mulberry32(cfg.seed * 7 + 3);
+        const step = points[1][0] - points[0][0];
+        let d = '';
+        for (let x = rand() * cfg.trees.gap[1]; x < width; x += lerp(cfg.trees.gap[0], cfg.trees.gap[1], rand())) {
+          const y = points[Math.min(points.length - 1, Math.round(x / step))][1] + 3;
+          d += pinePath(x, y, lerp(cfg.trees.height[0], cfg.trees.height[1], rand()));
+        }
+        return d;
+      };
+
+      const horsesMarkup = (cfg, points, width, height) => {
+        const step = points[1][0] - points[0][0];
+        const narrow = width < 640;
+        return (narrow ? cfg.horses.slice(0, 5) : cfg.horses).map(([fx, depth, size, colour, facingRight]) => {
+          const x = fx * width;
+          const crest = points[Math.min(points.length - 1, Math.round(x / step))][1];
+          const y = crest + 8 + depth * Math.max(12, height - 50 - crest);
+          const s = size * (narrow ? .75 : 1) * (.8 + .4 * depth);
+          const flip = facingRight ? ` scale(-1 1) translate(-40 0)` : '';
+          return `<use href="#horse" fill="${colour}" transform="translate(${fmt(x - 20 * s)} ${fmt(y - 26 * s)}) scale(${s.toFixed(3)})${flip}" />`;
+        }).join('');
+      };
+
+      const drawRange = (svg) => {
+        const cfg = RANGES[svg.dataset.range];
+        const width = Math.round(svg.clientWidth);
+        const height = Math.round(svg.clientHeight);
+        if (!cfg || !width || !height) return;
+        const points = ridgePoints(cfg, width, height);
+        let d = `M0 ${height}L${points.map(([x, y]) => `${fmt(x)} ${fmt(y)}`).join('L')}L${width} ${height}Z`;
+        if (cfg.trees) d += treesPath(cfg, points, width);
+        const id = `range-${svg.dataset.range}`;
+        let markup = `<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${cfg.fill[0]}"/><stop offset="1" stop-color="${cfg.fill[1]}"/></linearGradient></defs><path d="${d}" fill="url(#${id})"/>`;
+        if (cfg.shade) markup += `<path d="${shadePath(cfg, points, width, height)}" fill="#141c18" fill-opacity="${cfg.shade}"/>`;
+        if (cfg.snow) markup += `<path d="${snowPath(cfg, points, height)}" fill="${cfg.snow.color}"/>`;
+        if (cfg.horses) markup += horsesMarkup(cfg, points, width, height);
+        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        svg.innerHTML = markup;
+      };
+
+      /* ---------------- Topographic contour lines (marching squares) ---------------- */
+      const drawTopo = (svg) => {
+        const width = Math.round(svg.clientWidth);
+        const height = Math.round(svg.clientHeight);
+        if (!width || !height) return;
+        const noise = noise2D(Number(svg.dataset.topo));
+        const cell = 12;
+        const cols = Math.ceil(width / cell) + 1;
+        const rows = Math.ceil(height / cell) + 1;
+        const field = new Float32Array(cols * rows);
+        let min = Infinity, max = -Infinity;
+        for (let j = 0; j < rows; j++) {
+          for (let i = 0; i < cols; i++) {
+            let v = 0, amp = 1, freq = 1 / 340, norm = 0;
+            for (let o = 0; o < 4; o++) {
+              v += amp * noise(i * cell * freq + o * 31.7, j * cell * freq - o * 17.1);
+              norm += amp;
+              amp *= .5;
+              freq *= 2.1;
+            }
+            v /= norm;
+            field[j * cols + i] = v;
+            if (v < min) min = v;
+            if (v > max) max = v;
+          }
+        }
+        // Each contour crossing is keyed by the grid edge it sits on, so neighbouring
+        // cells share points and the little segments can be chained into long lines.
+        const traceLevel = (t) => {
+          const points = new Map();
+          const segments = [];
+          const at = (key, x, y) => { points.set(key, [x, y]); return key; };
+          for (let j = 0; j < rows - 1; j++) {
+            for (let i = 0; i < cols - 1; i++) {
+              const a = field[j * cols + i], b = field[j * cols + i + 1];
+              const c = field[(j + 1) * cols + i + 1], e = field[(j + 1) * cols + i];
+              const index = (a > t ? 8 : 0) | (b > t ? 4 : 0) | (c > t ? 2 : 0) | (e > t ? 1 : 0);
+              if (index === 0 || index === 15) continue;
+              const x = i * cell, y = j * cell;
+              const top = () => at(`h${i}_${j}`, x + (cell * (t - a)) / (b - a), y);
+              const right = () => at(`v${i + 1}_${j}`, x + cell, y + (cell * (t - b)) / (c - b));
+              const bottom = () => at(`h${i}_${j + 1}`, x + (cell * (t - e)) / (c - e), y + cell);
+              const left = () => at(`v${i}_${j}`, x, y + (cell * (t - a)) / (e - a));
+              switch (index) {
+                case 1: case 14: segments.push([left(), bottom()]); break;
+                case 2: case 13: segments.push([bottom(), right()]); break;
+                case 3: case 12: segments.push([left(), right()]); break;
+                case 4: case 11: segments.push([top(), right()]); break;
+                case 6: case 9: segments.push([top(), bottom()]); break;
+                case 7: case 8: segments.push([left(), top()]); break;
+                case 5: segments.push([left(), top()], [bottom(), right()]); break;
+                case 10: segments.push([left(), bottom()], [top(), right()]); break;
+              }
+            }
+          }
+          const byKey = new Map();
+          segments.forEach(([p, q], n) => {
+            for (const key of [p, q]) {
+              if (!byKey.has(key)) byKey.set(key, []);
+              byKey.get(key).push(n);
+            }
+          });
+          const used = new Uint8Array(segments.length);
+          const extend = (key, chain) => {
+            for (;;) {
+              const next = byKey.get(key).find((n) => !used[n]);
+              if (next === undefined) return chain;
+              used[next] = 1;
+              const [p, q] = segments[next];
+              key = p === key ? q : p;
+              chain.push(key);
+            }
+          };
+          let d = '';
+          segments.forEach(([p, q], n) => {
+            if (used[n]) return;
+            used[n] = 1;
+            const chain = extend(p, []).reverse().concat([p, q], extend(q, []));
+            d += `M${chain.map((key) => points.get(key).map(fmt).join(' ')).join('L')}`;
+          });
+          return d;
+        };
+        const levels = 14;
+        let minor = '', major = '';
+        for (let l = 1; l < levels; l++) {
+          const d = traceLevel(min + ((max - min) * l) / levels);
+          if (l % 4 === 0) major += d;
+          else minor += d;
+        }
+        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        svg.innerHTML = `<path class="minor" d="${minor}"/><path class="major" d="${major}"/>`;
+      };
+
+      /* ---------------- Elevation profiles on the project cards ---------------- */
+      document.querySelectorAll('.profile[data-seed]').forEach((el, index) => {
+        const seed = hashString(el.dataset.seed);
+        const rand = mulberry32(seed);
+        const noise = noise1D(seed);
+        const W = 400, H = 100;
+        const peakX = .3 + rand() * .4, spread = .03 + rand() * .04;
+        const shoulderX = rand() < .5 ? peakX - .22 - rand() * .08 : peakX + .22 + rand() * .08;
+        const points = [];
+        for (let s = 0; s <= 120; s++) {
+          const t = s / 120;
+          const h = .12 + .62 * Math.exp(-((t - peakX) ** 2) / spread)
+            + .2 * Math.exp(-((t - shoulderX) ** 2) / .012)
+            + .18 * (fbm(noise, t * 8, 4) - .5);
+          points.push([t * W, H * (1 - Math.min(.94, Math.max(.06, h)))]);
+        }
+        const summit = points.reduce((best, p) => (p[1] < best[1] ? p : best));
+        const line = `M${points.map(([x, y]) => `${fmt(x)} ${fmt(y)}`).join('L')}`;
+        el.innerHTML = `
+          <span class="profile-label" aria-hidden="true">elev. profile</span>
+          <div class="profile-plot" aria-hidden="true">
+            <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+              <defs><linearGradient id="pf-${index}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8faa32" stop-opacity=".38"/><stop offset="1" stop-color="#8faa32" stop-opacity="0"/></linearGradient></defs>
+              <path class="pf-grid" d="M0 25H${W}M0 50H${W}M0 75H${W}"/>
+              <path d="${line}L${W} ${H}L0 ${H}Z" fill="url(#pf-${index})"/>
+              <path class="pf-line" d="${line}"/>
+            </svg>
+            <span class="summit" style="left:${fmt((summit[0] / W) * 100)}%; top:${fmt((summit[1] / H) * 100)}%">
+              <svg viewBox="0 0 14 20"><path d="M1.5 20V1.5" stroke="currentColor" stroke-width="1.6"/><path d="M2.2 1.8 12.5 5.3 2.2 8.8Z" fill="currentColor"/></svg>
+            </span>
+          </div>`;
+      });
+
+      /* ---------------- Draw & keep in sync with layout ---------------- */
+      const drawn = new WeakMap();
+      const draw = (svg) => {
+        drawn.set(svg, { w: svg.clientWidth, h: svg.clientHeight });
+        try {
+          if (svg.dataset.range) drawRange(svg);
+          else drawTopo(svg);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      const scenery = [...document.querySelectorAll('svg[data-range], svg[data-topo]')];
+      scenery.forEach(draw);
+
+      const pending = new Set();
+      let redrawTimer = 0;
+      const resizeObserver = new ResizeObserver((entries) => {
+        for (const { target } of entries) {
+          const last = drawn.get(target);
+          if (last && Math.abs(last.w - target.clientWidth) < 2 && Math.abs(last.h - target.clientHeight) < 2) continue;
+          pending.add(target);
+        }
+        if (!pending.size) return;
+        clearTimeout(redrawTimer);
+        redrawTimer = setTimeout(() => {
+          pending.forEach(draw);
+          pending.clear();
+        }, 150);
+      });
+      scenery.forEach((svg) => resizeObserver.observe(svg));
+
+      /* ---------------- Gentle parallax on the hero ---------------- */
+      const hero = document.getElementById('home');
+      const landscape = hero.querySelector('.landscape');
+      const depthLayers = [...hero.querySelectorAll('[data-depth]')];
+      let pointerTarget = 0, pointerNow = 0, scrollNow = 0, frame = 0;
+      const renderParallax = () => {
+        frame = 0;
+        pointerNow += (pointerTarget - pointerNow) * .07;
+        for (const el of depthLayers) {
+          const depth = Number(el.dataset.depth);
+          const x = pointerNow * (5 + depth * 22);
+          const y = scrollNow * .34 * (1 - depth);
+          el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
+        }
+        if (Math.abs(pointerTarget - pointerNow) > .001) frame = requestAnimationFrame(renderParallax);
+      };
+      const scheduleParallax = () => { if (!frame) frame = requestAnimationFrame(renderParallax); };
+      if (!reduceMotion) {
+        hero.addEventListener('pointermove', (event) => {
+          if (event.pointerType !== 'mouse') return;
+          pointerTarget = (event.clientX / window.innerWidth - .5) * 2;
+          scheduleParallax();
+        });
+        hero.addEventListener('pointerleave', () => { pointerTarget = 0; scheduleParallax(); });
+        // Layers only start sinking once the whole landscape has scrolled into view.
+        window.addEventListener('scroll', () => {
+          const { bottom } = landscape.getBoundingClientRect();
+          if (bottom < 0) return;
+          scrollNow = Math.max(0, window.innerHeight - bottom);
+          scheduleParallax();
+        }, { passive: true });
+      }
+
+      /* ---------------- Night sky ---------------- */
+      const stars = document.querySelector('.stars');
+      const starRand = mulberry32(2024);
+      let starMarkup = '';
+      for (let i = 0; i < 90; i++) {
+        const size = starRand() < .85 ? 1 + starRand() : 2 + starRand() * .8;
+        starMarkup += `<i style="left:${fmt(starRand() * 100)}%;top:${fmt(starRand() * 100)}%;width:${fmt(size)}px;height:${fmt(size)}px;--o:${(.3 + starRand() * .6).toFixed(2)};--d:${fmt(3 + starRand() * 5)}s;--delay:${fmt(-starRand() * 8)}s"></i>`;
+      }
+      stars.innerHTML = starMarkup;
+
+      /* ---------------- Contact form (EmailJS) ---------------- */
+      const form = document.getElementById('contact-form');
+      const statusLine = document.getElementById('form-status');
+      const submitButton = form.querySelector('button[type="submit"]');
+      const STATUS = {
+        idle: '// all fields are required',
+        sending: 'Sending…',
+        sent: 'Message sent! Thanks for stopping by.',
+        error: 'Oops! Something went wrong. Please try again.',
+      };
+      const setStatus = (state) => {
+        statusLine.dataset.state = state;
+        statusLine.textContent = STATUS[state];
+        statusLine.classList.toggle('is-sent', state === 'sent');
+        statusLine.classList.toggle('is-error', state === 'error');
+      };
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!window.emailjs) {
+          setStatus('error');
+          return;
+        }
+        setStatus('sending');
+        submitButton.disabled = true;
+        try {
+          await window.emailjs.sendForm(EMAILJS.serviceId, EMAILJS.templateId, form, { publicKey: EMAILJS.publicKey });
+          form.reset();
+          setStatus('sent');
+        } catch (error) {
+          console.error(error);
+          setStatus('error');
+        } finally {
+          submitButton.disabled = false;
+        }
+      });
+      form.addEventListener('input', () => {
+        if (statusLine.dataset.state === 'sent' || statusLine.dataset.state === 'error') setStatus('idle');
+      });
+
+      document.getElementById('year').textContent = String(new Date().getFullYear());
+    })();
+  </script>
+</body>
 </html>
